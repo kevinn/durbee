@@ -1,0 +1,21 @@
+{ 
+  "name": "Day 1",
+  "workouts": [
+    {
+      "name" : "step jacks",
+      "img"  : "/imgs/foundation/stepjacks.png"
+    },
+    {
+      "name" : "side jacks",
+      "img"  : "/imgs/foundation/sidejacks.png"
+    },
+    {
+      "name" : "side legs",
+      "img"  : "/imgs/foundation/sidelegs.png"
+    },
+    {
+      "name" : "knee to elbows",
+      "img"  : "/imgs/foundation/kneetoelbows.png"
+    }
+  ]
+}

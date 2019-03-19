@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Hello World!</title>
+  <link rel="stylesheet" href="assets/app.min.css" />
+</head>
+<body>
+  <div id="app">
+    <h1 class="title">{{ greeting() }}</h1>
+
+    <section class="workouts-list">
+      <a href="#" v-on:click="workoutOpen" :data-file="workout.file" v-for="workout in workoutList">
+        <img :src="workout.icon" :alt="workout.name" />
+        {{ workout.name }}
+      </a>
+    </section>
+
+    <section class="selected-workout" v-if="workoutopen">
+      <a href="#" v-on:click.prevent="workoutClose" class="close">&times;</a>
+
+      <div class="wrap">
+
+        <h2>workout name</h2>
+
+        <img src="assets/imgs/foundation/kneetoelbows.png" alt="" />
+
+        <select v-model="timerSelected" v-on:change="selectChange">
+          <option disabled value="">Select timer...</option>
+          <option v-bind:value="item.ms" v-for="item in timerlength">{{ item.length }}</option>
+        </select>
+
+        <div class="countdown-timer" id="timer">{{ timerDisplay() }}</div>
+
+        <button class="button" v-on:click="timerStart()" v-if="timerPaused">Start</button> 
+        <button class="button" v-on:click="timerPause()" v-if="!timerPaused">Pause</button> 
+        <button class="button button-outline" v-on:click="timerReset()">Reset</button>
+      </div>
+  
+      <audio src="assets/fx/beep.wav" id="fx"></audio>
+      <audio src="assets/fx/end.wav" id="fxEnd"></audio>
+    </section>
+  </div>
+  <script src="/node_modules/vue/dist/vue.js"></script>
+  <script src="/assets/src/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+  { 
+    "name": "Day 1", 
+    "file": "foundation-1.json",
+    "icon": "assets/imgs/foundation/kneetoelbows.png"
+  },
+  { 
+    "name": "Day 2", 
+    "file": "foundation-2.json",
+    "icon": "assets/imgs/foundation/sidejacks.png"
+  },
+  { 
+    "name": "Day 3", 
+    "file": "foundation-3.json",
+    "icon": "assets/imgs/foundation/stepjacks.png"
+  },
+  { 
+    "name": "Day 4", 
+    "file": "foundation-1.json",
+    "icon": "assets/imgs/foundation/kneetoelbows.png"
+  },
+  { 
+    "name": "Day 5", 
+    "file": "foundation-2.json",
+    "icon": "assets/imgs/foundation/sidejacks.png"
+  },
+  { 
+    "name": "Day 6", 
+    "file": "foundation-3.json",
+    "icon": "assets/imgs/foundation/stepjacks.png"
+  }
+]
