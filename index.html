@@ -12,7 +12,7 @@
     <h1 class="title">{{ greeting() }}</h1>
 
     <section class="workouts-list">
-      <a href="#" v-on:click="workoutOpen" :data-file="workout.file" v-for="workout in workoutList">
+      <a href="#" v-on:click="workoutSelected(workout.file)" v-for="workout in workoutList">
         <img :src="workout.icon" :alt="workout.name" />
         {{ workout.name }}
       </a>
@@ -23,9 +23,9 @@
 
       <div class="wrap">
 
-        <h2>workout name</h2>
+        <h2>{{ currentWorkout }}</h2>
 
-        <img src="assets/imgs/foundation/kneetoelbows.png" alt="" />
+        <img v-bind:src="currentWorkoutImg" alt="" />
 
         <select v-model="timerSelected" v-on:change="selectChange">
           <option disabled value="">Select timer...</option>
@@ -36,7 +36,10 @@
 
         <button class="button" v-on:click="timerStart()" v-if="timerPaused">Start</button> 
         <button class="button" v-on:click="timerPause()" v-if="!timerPaused">Pause</button> 
-        <button class="button button-outline" v-on:click="timerReset()">Reset</button>
+        <button class="button" v-on:click="workoutNext()" v-bind:disable="disableNext">Skip</button> 
+        <div>
+          <button class="button button-outline" v-on:click="timerReset()">Reset</button>
+        </div>
       </div>
   
       <audio src="assets/fx/beep.wav" id="fx"></audio>

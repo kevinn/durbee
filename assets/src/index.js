@@ -12,7 +12,13 @@ const vm = new Vue({
       { 'length': '5 seconds', 'ms': 5000 } // testing
     ],
     workoutList: [],
-    workoutopen: false
+    workoutSelectedData: [],
+    workoutopen: false,
+    currentWorkout: '',
+    currentWorkoutImg: '',
+    currentWorkoutNum: null,
+    disableNext: false,
+    disablePrev: false,
   },
   methods: {
     initList: function() {
@@ -87,11 +93,43 @@ const vm = new Vue({
 
       return 'Hello and good ' + greet + '!';
     },
-    workoutOpen: function() {
-      vm.workoutopen = true;
-    },
     workoutClose: function() {
       vm.workoutopen = false;
+    },
+    workoutFetch: function(workout) {
+      // console.log(workout);
+      fetch('assets/src/' + workout)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          for (let i = 0; i < data.workouts.length; i++) {
+            vm.workoutSelectedData.push(data.workouts[i]);
+          }
+          console.log('done: ', data.workouts);
+        });
+    },
+    workoutLoad: function(workoutnum) {     
+        vm.currentWorkout = vm.workoutSelectedData[workoutnum].name;
+        vm.currentWorkoutImg = vm.workoutSelectedData[workoutnum].img;
+    },
+    workoutNext: function() {     
+      if (vm.currentWorkoutNum <= (vm.workoutSelectedData.length - 1)) {
+        vm.currentWorkoutNum++;
+        vm.currentWorkout = vm.workoutSelectedData[vm.currentWorkoutNum].name;
+        vm.currentWorkoutImg = vm.workoutSelectedData[vm.currentWorkoutNum].img;
+      } else {
+        vm.disableNext = true;
+      }
+    },
+    workoutSelected: function(workout) {
+      vm.workoutFetch(workout);
+
+      setTimeout(() => {
+        vm.workoutLoad(0);
+      }, 250);
+      
+      vm.workoutopen = true;
     }
   },
   mounted() {
