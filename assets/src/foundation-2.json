@@ -2,20 +2,28 @@
   "name": "Day 2",
   "workouts": [
     {
-      "name" : "step jacks",
-      "img"  : "assets/imgs/foundation/stepjacks.png"
+      "name" : "reverse lunges",
+      "img"  : "assets/imgs/foundation/rev-lunges.png"
     },
     {
-      "name" : "side jacks",
-      "img"  : "assets/imgs/foundation/sidejacks.png"
+      "name" : "squats",
+      "img"  : "assets/imgs/foundation/squats.png"
     },
     {
-      "name" : "side legs",
-      "img"  : "assets/imgs/foundation/sideleg.png"
+      "name" : "squat hold",
+      "img"  : "assets/imgs/foundation/squats-hold.png"
     },
     {
-      "name" : "knee to elbows",
-      "img"  : "assets/imgs/foundation/kneetoelbows.png"
+      "name" : "arm raises",
+      "img"  : "assets/imgs/foundation/arm-raises.png"
+    },
+    {
+      "name" : "raised arm circles",
+      "img"  : "assets/imgs/foundation/arm-circles.png"
+    },
+    {
+      "name" : "arm hold",
+      "img"  : "assets/imgs/foundation/arm-hold.png"
     }
   ]
 }

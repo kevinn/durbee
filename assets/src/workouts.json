@@ -7,26 +7,21 @@
   { 
     "name": "Day 2", 
     "file": "foundation-2.json",
-    "icon": "assets/imgs/foundation/sidejacks.png"
+    "icon": "assets/imgs/foundation/rev-lunges.png"
   },
   { 
     "name": "Day 3", 
     "file": "foundation-3.json",
-    "icon": "assets/imgs/foundation/stepjacks.png"
+    "icon": "assets/imgs/foundation/march-steps.png"
   },
   { 
     "name": "Day 4", 
-    "file": "foundation-1.json",
-    "icon": "assets/imgs/foundation/kneetoelbows.png"
+    "file": "foundation-4.json",
+    "icon": "assets/imgs/foundation/raised-leg-swings.png"
   },
   { 
     "name": "Day 5", 
-    "file": "foundation-2.json",
-    "icon": "assets/imgs/foundation/sidejacks.png"
-  },
-  { 
-    "name": "Day 6", 
-    "file": "foundation-3.json",
-    "icon": "assets/imgs/foundation/stepjacks.png"
+    "file": "foundation-5.json",
+    "icon": "assets/imgs/foundation/half-jacks.png"
   }
 ]

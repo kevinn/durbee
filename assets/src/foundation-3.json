@@ -2,20 +2,28 @@
   "name": "Day 3",
   "workouts": [
     {
-      "name" : "step jacks",
-      "img"  : "assets/imgs/foundation/stepjacks.png"
+      "name" : "march steps",
+      "img"  : "assets/imgs/foundation/march-steps.png"
     },
     {
-      "name" : "side jacks",
-      "img"  : "assets/imgs/foundation/sidejacks.png"
+      "name" : "high knees",
+      "img"  : "assets/imgs/foundation/high-knees.png"
     },
     {
-      "name" : "side legs",
-      "img"  : "assets/imgs/foundation/sideleg.png"
+      "name" : "march steps",
+      "img"  : "assets/imgs/foundation/march-steps.png"
     },
     {
-      "name" : "knee to elbows",
-      "img"  : "assets/imgs/foundation/kneetoelbows.png"
+      "name" : "high knees",
+      "img"  : "assets/imgs/foundation/high-knees.png"
+    },
+    {
+      "name" : "march steps",
+      "img"  : "assets/imgs/foundation/march-steps.png"
+    },
+    {
+      "name" : "high knees",
+      "img"  : "assets/imgs/foundation/high-knees.png"
     }
   ]
 }

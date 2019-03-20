@@ -1,0 +1,21 @@
+{ 
+  "name": "Day 5",
+  "workouts": [
+    {
+      "name" : "half jacks",
+      "img"  : "assets/imgs/foundation/half-jacks.png"
+    },
+    {
+      "name" : "side jacks",
+      "img"  : "assets/imgs/foundation/sidejacks.png"
+    },
+    {
+      "name" : "knee-to-elbows",
+      "img"  : "assets/imgs/foundation/kneetoelbows.png"
+    },
+    {
+      "name" : "side leg extensions",
+      "img"  : "assets/imgs/foundation/sideleg.png"
+    }
+  ]
+}

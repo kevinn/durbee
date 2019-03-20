@@ -1,0 +1,21 @@
+{ 
+  "name": "Day 4",
+  "workouts": [
+    {
+      "name" : "raised leg swings",
+      "img"  : "assets/imgs/foundation/raised-leg-swings.png"
+    },
+    {
+      "name" : "alt arm/leg raises",
+      "img"  : "assets/imgs/foundation/alt-armleg-raises.png"
+    },
+    {
+      "name" : "upward leg extensions",
+      "img"  : "assets/imgs/foundation/upward-leg-ext.png"
+    },
+    {
+      "name" : "side leg extensions",
+      "img"  : "assets/imgs/foundation/side-leg-ext.png"
+    }
+  ]
+}
