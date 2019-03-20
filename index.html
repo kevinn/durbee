@@ -4,16 +4,23 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Hello World!</title>
+  <title>Durbee - An excercise app</title>
   <link rel="stylesheet" href="assets/app.min.css" />
 </head>
 <body>
   <div id="app">
+
+    <header>
+      <a href="#" class="haslogo"><img src="assets/imgs/logo.png" class="logo" /></a>
+    </header>
+
     <h1 class="title">{{ greeting() }}</h1>
 
     <section class="workouts-list">
       <a href="#" v-on:click="workoutSelected(workout.file)" v-for="workout in workoutList">
-        <img :src="workout.icon" :alt="workout.name" />
+        <span class="workout-img">
+          <img :src="workout.icon" :alt="workout.name" />
+        </span>
         {{ workout.name }}
       </a>
     </section>
@@ -23,21 +30,23 @@
 
       <div class="wrap">
 
-        <h2>{{ currentWorkout }}</h2>
+        <h2 class="title">{{ currentWorkout }}</h2>
+
 
         <img v-bind:src="currentWorkoutImg" alt="" />
 
-        <select v-model="timerSelected" v-on:change="selectChange">
-          <option disabled value="">Select timer...</option>
-          <option v-bind:value="item.ms" v-for="item in timerlength">{{ item.length }}</option>
-        </select>
-
         <div class="countdown-timer" id="timer">{{ timerDisplay() }}</div>
 
-        <button class="button" v-on:click="timerStart()" v-if="timerPaused">Start</button> 
-        <button class="button" v-on:click="timerPause()" v-if="!timerPaused">Pause</button> 
-        <button class="button" v-on:click="workoutNext()" v-bind:disable="disableNext">Skip</button> 
-        <div>
+        <button class="button" v-on:click="workoutPrev()" :disabled="disablePrev">&lt;</button> 
+        <button class="button" v-on:click="timerStart()" :disabled="!timerSelected" v-if="timerPaused">Start</button> 
+        <button class="button" v-on:click="timerPause()" :disabled="!timerSelected" v-if="!timerPaused">Pause</button> 
+        <button class="button" v-on:click="workoutNext()" :disabled="disableNext">&gt;</button> 
+
+        <div class="timer-wrap">
+          <select v-model="timerSelected" v-on:change="selectChange">
+            <option disabled value="">Select timer...</option>
+            <option v-bind:value="item.ms" v-for="item in timerlength">{{ item.length }}</option>
+          </select>
           <button class="button button-outline" v-on:click="timerReset()">Reset</button>
         </div>
       </div>
@@ -45,6 +54,10 @@
       <audio src="assets/fx/beep.wav" id="fx"></audio>
       <audio src="assets/fx/end.wav" id="fxEnd"></audio>
     </section>
+
+    <footer>
+      <small>This app is a Vue.js learning excercise (heh) by <a href="https://github.com/kevinn">kevinn</a>. All workouts &copy; Darebee.com</small>
+    </footer>
   </div>
   <script src="/node_modules/vue/dist/vue.js"></script>
   <script src="/assets/src/index.js"></script>

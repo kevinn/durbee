@@ -1,24 +1,26 @@
 const vm = new Vue({
   el: "#app",
-  data: {
-    timer: null,
-    timerPaused: true,
-    timerSelected: '',
-    timerElapsed: null,
-    timerlength: [
-      { 'length': '3 minutes', 'ms': 180000 },
-      { 'length': '2 minutes', 'ms': 120000 },
-      { 'length': '1 minute', 'ms': 60000 },
-      { 'length': '5 seconds', 'ms': 5000 } // testing
-    ],
-    workoutList: [],
-    workoutSelectedData: [],
-    workoutopen: false,
-    currentWorkout: '',
-    currentWorkoutImg: '',
-    currentWorkoutNum: null,
-    disableNext: false,
-    disablePrev: false,
+  data() {
+    return {
+      timer: null,
+      timerPaused: true,
+      timerSelected: '',
+      timerElapsed: null,
+      timerlength: [
+        { 'length': '3 minutes', 'ms': 180000 },
+        { 'length': '2 minutes', 'ms': 120000 },
+        { 'length': '1 minute', 'ms': 60000 },
+        { 'length': '5 seconds', 'ms': 5000 } // testing
+      ],
+      workoutList: [],
+      workoutSelectedData: [],
+      workoutopen: false,
+      currentWorkout: null,
+      currentWorkoutImg: null,
+      currentWorkoutNum: null,
+      disableNext: false,
+      disablePrev: true
+    }
   },
   methods: {
     initList: function() {
@@ -72,6 +74,9 @@ const vm = new Vue({
       audioEl.play();
     },
     beepEnd: function() {
+      const beep = document.getElementById('fx');
+      beep.pause();
+
       const audioEl = document.getElementById('fxEnd');
       audioEl.currentTime = 0;
       audioEl.play();
@@ -94,7 +99,17 @@ const vm = new Vue({
       return 'Hello and good ' + greet + '!';
     },
     workoutClose: function() {
+      // reset everything?
       vm.workoutopen = false;
+      vm.workoutClear();
+    },
+    workoutClear: function() {
+      vm.workoutSelectedData = [];
+      vm.timerSelected = '';
+      vm.timerElapsed = null;
+      vm.currentWorkout = null;
+      vm.currentWorkoutImg = null;
+      vm.currentWorkoutNum = 0;
     },
     workoutFetch: function(workout) {
       // console.log(workout);
@@ -109,37 +124,56 @@ const vm = new Vue({
           console.log('done: ', data.workouts);
         });
     },
-    workoutLoad: function(workoutnum) {     
-        vm.currentWorkout = vm.workoutSelectedData[workoutnum].name;
-        vm.currentWorkoutImg = vm.workoutSelectedData[workoutnum].img;
+    workoutLoad: function(workoutnum) {
+      vm.currentWorkout = vm.workoutSelectedData[workoutnum].name;
+      vm.currentWorkoutImg = vm.workoutSelectedData[workoutnum].img;
+
+      let limit = vm.workoutSelectedData.length - 1;
+
+      if (workoutnum === limit) {
+        vm.disableNext = true;
+      } else {
+        vm.disableNext = false;
+      }
+
+      if (workoutnum === 0) {
+        vm.disablePrev = true;
+      } else {
+        vm.disablePrev = false;
+      }
     },
     workoutNext: function() {     
-      if (vm.currentWorkoutNum <= (vm.workoutSelectedData.length - 1)) {
+      let limit = vm.workoutSelectedData.length - 1;
+      
+      if (vm.currentWorkoutNum <= limit) {
         vm.currentWorkoutNum++;
-        vm.currentWorkout = vm.workoutSelectedData[vm.currentWorkoutNum].name;
-        vm.currentWorkoutImg = vm.workoutSelectedData[vm.currentWorkoutNum].img;
-      } else {
-        vm.disableNext = true;
-      }
+        vm.workoutLoad(vm.currentWorkoutNum);
+      } 
+    },
+    workoutPrev: function() {           
+      if (vm.currentWorkoutNum >= 1) {
+        vm.currentWorkoutNum--;
+        vm.workoutLoad(vm.currentWorkoutNum);
+      } 
     },
     workoutSelected: function(workout) {
       vm.workoutFetch(workout);
 
       setTimeout(() => {
         vm.workoutLoad(0);
-      }, 250);
-      
-      vm.workoutopen = true;
+        vm.workoutopen = true;
+      }, 350);
     }
   },
   mounted() {
+    // load workouts list
     fetch('/assets/src/workouts.json')
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         vm.workoutList = data;
-        console.log("kk", vm.workoutList);
+        // console.log("kk", vm.workoutList);
         vm.initList();
       });
   }

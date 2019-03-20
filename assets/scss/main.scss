@@ -1,10 +1,19 @@
 @import "../../node_modules/milligram/src/milligram.sass";
 
+$gray: #f9f9f9;
+$gray-dark: #ddd;
+$white: #fff;
+$shadow: 0 0 16px rgba(0,0,0,0.2);
+
+html {
+  background-color: $gray-dark;
+}
+
 body { 
+  margin-top: 60px;
   padding: 16px;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
-  background-color: #ddd;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .wrap {
@@ -13,11 +22,23 @@ body {
   max-width: 480px;
 }
 
+.workout-img {
+  display: block;
+  padding: 16px;
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 64px;
+  }
+}
+
 .workouts-list {
   display: flex;
   flex-wrap: wrap;
-  align-items: space-between;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
 
   margin: 0 auto;
   max-width: 768px;
@@ -39,28 +60,31 @@ body {
     font-size: 13px;
     font-weight: bold;
     text-align: center;
-    background-color: #f9f9f9;
-    border-color: #fff;
+    background-color: $gray;
+    border-color: $white;
 
     border-radius: 8px;
-    box-shadow: 0 0 16px rgba(0,0,0,0.2);
-
-    img {
-      display: block;
-      margin: 0 auto 8px;
-      width: auto;
-      height: 64px;
-    }
+    box-shadow: $shadow;
   }
 }
 
 
 .countdown-timer {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 16px;
   font-size: 3em;
-  padding: 16px;
   font-weight: bold;
+}
+
+.timer-wrap {
+  display: flex;
+  align-items: center;
+
+  button { margin-bottom: 0; }
+
+  > * + * {
+    margin-left: 8px;
+  }
 }
 
 
@@ -69,32 +93,38 @@ body {
   top: 0; right: 0; left: 0; bottom: 0;
   z-index: 100;
 
-  background-color: rgba(222,222,222, 0.9);
+  background-color: rgba($gray-dark, 0.9);
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 
-  .wrap {
-    padding: 24px;
-    max-width: 90vh;
-    max-height: 90vh;
+  overflow-y: scroll;
 
+  .wrap {
+    margin: 16px;
+    padding: 24px;
+    max-width: 386px;
+    
     text-align: center;
+
+    background: $gray;
+    border-radius: 8px;
+    box-shadow: $shadow;
   }
 
-  img {
+  img { 
     display: block;
-    margin: 0 auto 16px;
+    margin: 0 auto;
     width: auto;
-    max-height: 32vh;
-    border-radius: 8px;
+    height: 200px;
   }
 
   select { 
     margin-bottom: 0; 
-    background-color: #fff;
+    font-size: 16px;
+    background-color: $white;
   }
 
   .close {
@@ -103,6 +133,7 @@ body {
     right: 16px;
     
     font-size: 44px;
+    line-height: 44px;
 
     display: block;
     width: 44px;
@@ -111,6 +142,36 @@ body {
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
+}
+
+footer {
+  padding: 16px;
+  font-size: 13px;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background-color: $gray;
+  height: 44px;
+
+  box-shadow: $shadow;
+
+  .haslogo {
+    display: block;
+    margin: 0 16px;
+    height: 32px;
+  }
+}
+
+.logo {
+  display: inline-block;
+  width: auto;
+  height: 32px;
 }
