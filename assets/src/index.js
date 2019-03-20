@@ -167,7 +167,7 @@ const vm = new Vue({
   },
   mounted() {
     // load workouts list
-    fetch('/assets/src/workouts.json')
+    fetch('assets/src/workouts.json')
       .then((response) => {
         return response.json();
       })
