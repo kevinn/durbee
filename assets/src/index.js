@@ -156,7 +156,7 @@ const vm = new Vue({
         greet = 'evening';
       }
 
-      return 'Hello and good ' + greet + '!';
+      return 'Good ' + greet + '!';
     },
     timerDisplay: function() {
       // display timeElapsed in 00:00 format

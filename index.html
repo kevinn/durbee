@@ -16,7 +16,7 @@
     </header>
 
     <section>
-      <div class="panel" v-if="workoutSelectedData.length === 0">
+      <div v-if="workoutSelectedData.length === 0">
         <h1 class="title">Pick a workout</h1>
         <div class="workouts-list">
           <a href="#" @click="workoutSelected(workout.file)" v-for="workout in workoutList">
@@ -27,9 +27,9 @@
           </a>
         </div>
       </div>
-      <div class="panel" v-if="workoutSelectedData.length !== 0">
-        <h1 class="title">How long for each workout?</h1>
-        <div class="center">
+      <div v-if="workoutSelectedData.length !== 0">
+        <h1 class="title">Set a timer for each workout</h1>
+        <div class="panel center">
           <select v-model="isTimerSelected" @change="selectChange">
             <option disabled value="">Select timer...</option>
             <option v-bind:value="item.ms" v-for="item in timerChoices">{{ item.length }}</option>
@@ -43,9 +43,9 @@
     </section>
 
     <section class="modal" v-if="modalOpen">
-      <a href="#" @click.prevent="modalClose" class="close">&times;</a>
-
       <div class="wrap">
+        <a href="#" @click.prevent="modalClose" class="close">&times;</a>
+
         <h2 class="title">{{ currWorkout }}</h2>
 
         <img v-bind:src="currWorkoutImg" alt="" />
@@ -56,10 +56,11 @@
           <button class="button button-large block" @click="timerStart()" v-if="timerPaused">Start</button> 
           <button class="button button-large block" @click="timerPause()" v-if="!timerPaused">Pause</button> 
         </div>
-
-        <button class="button button-clear" @click="skipPrev" :disabled="disablePrev">&lt; Skip</button> 
-        <button class="button button-clear" @click="timerReset()">Reset timer</button>
-        <button class="button button-clear" @click="skipNext" :disabled="disableNext">Skip &gt;</button> 
+        <div class="button-group slim">
+          <button class="button button-clear" @click="skipPrev" :disabled="disablePrev">&lt; Skip</button> 
+          <button class="button button-clear primary" @click="timerReset()">Reset timer</button>
+          <button class="button button-clear" @click="skipNext" :disabled="disableNext">Skip &gt;</button> 
+        </div>
       </div>
     </section>
 
@@ -69,7 +70,7 @@
     <audio src="assets/fx/beep.wav" id="beep"></audio>
     <audio src="assets/fx/end.wav" id="prrrt"></audio>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.min.js"></script>
   <script src="assets/src/index.js"></script>
 </body>
 </html>
