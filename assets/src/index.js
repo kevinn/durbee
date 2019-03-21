@@ -22,7 +22,7 @@ const vm = new Vue({
     disablePrev: true,
     modalOpen: false,
     isAutoplay: false,
-    btndisabled: false
+    btnDisabled: false
   },
   methods: {
     modal: function(action) {
@@ -43,7 +43,7 @@ const vm = new Vue({
       console.log('time is set to: ', vm.timerElapsed);
     },
     timerStart: function() {
-      vm.btndisabled = true;
+      vm.btnDisabled = true;
       vm.beep('ready');
 
       setTimeout(()=>{
@@ -56,13 +56,14 @@ const vm = new Vue({
     timerPause: function() {
       clearInterval(vm.timer);
       vm.timerPaused = true;
-      vm.btndisabled = false;
+      vm.btnDisabled = false;
     },
     timerReset: function() {
       // reset back to timerSelected;
       clearInterval(vm.timer);
       vm.timerPaused = true;
       vm.timerElapsed = vm.isTimerSelected;
+      vm.btnDisabled = false;
     },
     countdown: function() {
       vm.currWorkoutDone = false;
@@ -74,6 +75,7 @@ const vm = new Vue({
         vm.beep('prrrt');
         vm.timerReset();
         vm.currWorkoutDone = true;
+        vm.buttonDisabled = false;
       }
     },
     beep: function(soundId) {
@@ -89,6 +91,14 @@ const vm = new Vue({
       vm.currWorkoutImg = null;
       vm.currWorkoutLimit = null,
       vm.currWorkoutNum = 0;
+      vm.buttonDisabled = false;
+      vm.timerPause();
+
+      const audioEl = document.querySelectorAll('audio');
+      for (let i = 0; i < audioEl.length; i++){
+        audioEl[i].currentTime = 0;
+        audioEl[i].pause();        
+      };
     },
     workoutFetch: function(workout) {
       fetch('assets/src/' + workout)
