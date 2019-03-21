@@ -3,19 +3,19 @@
   "workouts": [
     {
       "name" : "step jacks",
-      "img"  : "assets/imgs/foundation/stepjacks.png"
+      "img"  : "assets/imgs/foundation/stepjacks.jpg"
     },
     {
       "name" : "side jacks",
-      "img"  : "assets/imgs/foundation/sidejacks.png"
+      "img"  : "assets/imgs/foundation/sidejacks.jpg"
     },
     {
       "name" : "side legs",
-      "img"  : "assets/imgs/foundation/sideleg.png"
+      "img"  : "assets/imgs/foundation/sideleg.jpg"
     },
     {
       "name" : "knee to elbows",
-      "img"  : "assets/imgs/foundation/kneetoelbows.png"
+      "img"  : "assets/imgs/foundation/kneetoelbows.jpg"
     }
   ]
 }

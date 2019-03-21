@@ -3,19 +3,19 @@
   "workouts": [
     {
       "name" : "half jacks",
-      "img"  : "assets/imgs/foundation/half-jacks.png"
+      "img"  : "assets/imgs/foundation/half-jacks.jpg"
     },
     {
       "name" : "side jacks",
-      "img"  : "assets/imgs/foundation/sidejacks.png"
+      "img"  : "assets/imgs/foundation/sidejacks.jpg"
     },
     {
       "name" : "knee-to-elbows",
-      "img"  : "assets/imgs/foundation/kneetoelbows.png"
+      "img"  : "assets/imgs/foundation/kneetoelbows.jpg"
     },
     {
       "name" : "side leg extensions",
-      "img"  : "assets/imgs/foundation/sideleg.png"
+      "img"  : "assets/imgs/foundation/sideleg.jpg"
     }
   ]
 }

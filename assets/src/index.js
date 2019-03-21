@@ -131,6 +131,9 @@ const vm = new Vue({
     },
     workoutSelected: function(workout) {
       vm.workoutFetch(workout);
+    },
+    back: function() {
+      vm.workoutClear(); 
     }
   },
   mounted() {

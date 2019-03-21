@@ -3,27 +3,27 @@
   "workouts": [
     {
       "name" : "reverse lunges",
-      "img"  : "assets/imgs/foundation/rev-lunges.png"
+      "img"  : "assets/imgs/foundation/rev-lunges.jpg"
     },
     {
       "name" : "squats",
-      "img"  : "assets/imgs/foundation/squats.png"
+      "img"  : "assets/imgs/foundation/squats.jpg"
     },
     {
       "name" : "squat hold",
-      "img"  : "assets/imgs/foundation/squats-hold.png"
+      "img"  : "assets/imgs/foundation/squats-hold.jpg"
     },
     {
       "name" : "arm raises",
-      "img"  : "assets/imgs/foundation/arm-raises.png"
+      "img"  : "assets/imgs/foundation/arm-raises.jpg"
     },
     {
       "name" : "raised arm circles",
-      "img"  : "assets/imgs/foundation/arm-circles.png"
+      "img"  : "assets/imgs/foundation/arm-circles.jpg"
     },
     {
       "name" : "arm hold",
-      "img"  : "assets/imgs/foundation/arm-hold.png"
+      "img"  : "assets/imgs/foundation/arm-hold.jpg"
     }
   ]
 }

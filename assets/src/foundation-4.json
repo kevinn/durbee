@@ -3,19 +3,19 @@
   "workouts": [
     {
       "name" : "raised leg swings",
-      "img"  : "assets/imgs/foundation/raised-leg-swings.png"
+      "img"  : "assets/imgs/foundation/raised-leg-swings.jpg"
     },
     {
       "name" : "alt arm/leg raises",
-      "img"  : "assets/imgs/foundation/alt-armleg-raises.png"
+      "img"  : "assets/imgs/foundation/alt-armleg-raises.jpg"
     },
     {
       "name" : "upward leg extensions",
-      "img"  : "assets/imgs/foundation/upward-leg-ext.png"
+      "img"  : "assets/imgs/foundation/upward-leg-ext.jpg"
     },
     {
       "name" : "side leg extensions",
-      "img"  : "assets/imgs/foundation/side-leg-ext.png"
+      "img"  : "assets/imgs/foundation/side-leg-ext.jpg"
     }
   ]
 }

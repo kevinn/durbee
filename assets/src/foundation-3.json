@@ -3,27 +3,27 @@
   "workouts": [
     {
       "name" : "march steps",
-      "img"  : "assets/imgs/foundation/march-steps.png"
+      "img"  : "assets/imgs/foundation/march-steps.jpg"
     },
     {
       "name" : "high knees",
-      "img"  : "assets/imgs/foundation/high-knees.png"
+      "img"  : "assets/imgs/foundation/high-knees.jpg"
     },
     {
       "name" : "march steps",
-      "img"  : "assets/imgs/foundation/march-steps.png"
+      "img"  : "assets/imgs/foundation/march-steps.jpg"
     },
     {
       "name" : "high knees",
-      "img"  : "assets/imgs/foundation/high-knees.png"
+      "img"  : "assets/imgs/foundation/high-knees.jpg"
     },
     {
       "name" : "march steps",
-      "img"  : "assets/imgs/foundation/march-steps.png"
+      "img"  : "assets/imgs/foundation/march-steps.jpg"
     },
     {
       "name" : "high knees",
-      "img"  : "assets/imgs/foundation/high-knees.png"
+      "img"  : "assets/imgs/foundation/high-knees.jpg"
     }
   ]
 }

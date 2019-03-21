@@ -3,7 +3,7 @@
 $gray: #f9f9f9;
 $gray-dark: #ddd;
 $white: #fff;
-$shadow: 0 0 16px rgba(0,0,0,0.2);
+$shadow: 0 0 12px rgba(0,0,0,0.08);
 
 html {
   background-color: $gray-dark;
@@ -63,8 +63,8 @@ body {
     font-size: 13px;
     font-weight: bold;
     text-align: center;
-    background-color: $gray;
-    border-color: $white;
+    background-color: $white;
+    border-color: $gray-dark;
 
     border-radius: 8px;
     box-shadow: $shadow;
@@ -115,7 +115,7 @@ body {
     
     text-align: center;
 
-    background: $gray;
+    background: $white;
     border-radius: 8px;
     box-shadow: $shadow;
   }
