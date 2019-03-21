@@ -16,10 +16,13 @@ const vm = new Vue({
     currWorkout: null,
     currWorkoutImg: null,
     currWorkoutNum: null,
+    currWorkoutLimit: null,
+    currWorkoutDone: false,
     disableNext: false,
     disablePrev: true,
     modalOpen: false,
-    isAutoplay: false
+    isAutoplay: false,
+    btndisabled: false
   },
   methods: {
     modal: function(action) {
@@ -40,28 +43,37 @@ const vm = new Vue({
       console.log('time is set to: ', vm.timerElapsed);
     },
     timerStart: function() {
-      vm.timerPaused = false;
-      vm.timer = setInterval(()=>{
-        vm.countdown();
-      }, 1000);
+      vm.btndisabled = true;
+      vm.beep('ready');
+
+      setTimeout(()=>{
+        vm.timerPaused = false;
+        vm.timer = setInterval(()=>{
+          vm.countdown();
+        }, 1000);
+      }, 2000);
     },
     timerPause: function() {
       clearInterval(vm.timer);
       vm.timerPaused = true;
+      vm.btndisabled = false;
     },
     timerReset: function() {
       // reset back to timerSelected;
       clearInterval(vm.timer);
-      vm.timerElapsed = vm.isTimerSelected;
       vm.timerPaused = true;
+      vm.timerElapsed = vm.isTimerSelected;
     },
     countdown: function() {
+      vm.currWorkoutDone = false;
+
       if (vm.timerElapsed !== 0) {
         vm.timerElapsed = vm.timerElapsed - 1000;
         vm.beep('beep');
       } else {
         vm.beep('prrrt');
         vm.timerReset();
+        vm.currWorkoutDone = true;
       }
     },
     beep: function(soundId) {
@@ -75,6 +87,7 @@ const vm = new Vue({
       vm.timerElapsed = null;
       vm.currWorkout = null;
       vm.currWorkoutImg = null;
+      vm.currWorkoutLimit = null,
       vm.currWorkoutNum = 0;
     },
     workoutFetch: function(workout) {
@@ -86,17 +99,23 @@ const vm = new Vue({
           for (let i = 0; i < data.workouts.length; i++) {
             vm.workoutSelectedData.push(data.workouts[i]);
           }
+
+          vm.currWorkoutLimit = vm.workoutSelectedData.length - 1;
           vm.workoutLoad(0);
         });
     },
     workoutLoad: function(workoutnum) {
-      vm.currWorkout = vm.workoutSelectedData[workoutnum].name;
-      vm.currWorkoutImg = vm.workoutSelectedData[workoutnum].img;
-      console.log('loading... ', vm.currWorkout);
+      // load name and image
 
-      let limit = vm.workoutSelectedData.length - 1;
+      if (vm.currWorkoutNum <= vm.currWorkoutLimit) {
+        vm.currWorkout = vm.workoutSelectedData[workoutnum].name;
+        vm.currWorkoutImg = vm.workoutSelectedData[workoutnum].img;
+        console.log('loading... ', vm.currWorkout);
+      } else {
+        console.log('nothing to load...');
+      }
 
-      if (workoutnum === limit) {
+      if (workoutnum === vm.currWorkoutLimit) {
         vm.disableNext = true;
       } else {
         vm.disableNext = false;
@@ -108,13 +127,8 @@ const vm = new Vue({
         vm.disablePrev = false;
       }
     },
-    autoPlay: function() {
-
-    },
-    skipNext: function() {     
-      let limit = vm.workoutSelectedData.length - 1;
-      
-      if (vm.currWorkoutNum <= limit) {
+    skipNext: function() {         
+      if (vm.currWorkoutNum <= vm.currWorkoutLimit) {
         vm.currWorkoutNum++;
         vm.workoutLoad(vm.currWorkoutNum);
       } 
@@ -169,6 +183,18 @@ const vm = new Vue({
       let minutes = Math.floor( ms / 60000);
       let seconds = ((ms % 60000) / 1000).toFixed(0);
       return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+  },
+  watch: {
+    currWorkoutDone: function() {
+      if (vm.isAutoplay && vm.currWorkoutDone === true && vm.currWorkoutNum < vm.currWorkoutLimit) {
+        vm.skipNext();
+        setTimeout(()=>{
+          vm.timerStart();
+        }, 2000);
+      } else {
+        console.log('Love is over...');
+      }
     }
   }
 });

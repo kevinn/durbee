@@ -55,8 +55,8 @@
         <div class="countdown-timer" id="timer">{{ timerDisplay }}</div>
         
         <div class="button-group">
-          <button class="button button-large block" @click="timerStart()" v-if="timerPaused">Start</button> 
-          <button class="button button-large block" @click="timerPause()" v-if="!timerPaused">Pause</button> 
+          <button class="button button-large block" @click="timerStart()" v-if="timerPaused" :disabled="btndisabled">Start</button> 
+          <button class="button button-large block" @click="timerPause()" v-if="!timerPaused">Pause</button>
         </div>
         <div class="button-group slim">
           <button class="button button-clear" @click="skipPrev" :disabled="disablePrev">&lt; Skip</button> 
@@ -71,6 +71,7 @@
     </footer>
     <audio src="assets/fx/beep.wav" id="beep"></audio>
     <audio src="assets/fx/end.wav" id="prrrt"></audio>
+    <audio src="assets/fx/start.wav" id="ready"></audio>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.9/dist/vue.min.js"></script>
   <script src="assets/src/index.js"></script>
